@@ -8,21 +8,23 @@ import {
     Legend
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels'; // Import the datalabels plugin
 
 ChartJS.register(
     ArcElement,
     Tooltip,
-    Legend
+    Legend,
+    ChartDataLabels // Register the plugin
 );
 
 const DonughtWithLabel = () => {
     const data = {
         datasets: [{
-            data: [60, 40, 20],
+            data: [65, 20, 15], // Adjusted values to match the image
             backgroundColor: [
-                'rgb(255, 99, 132)',
+                'rgb(182, 102, 210)',
                 'rgb(54, 162, 235)',
-                'black'
+                'rgb(255, 99, 132)',
             ],
             borderWidth: 0, // Removes space between items
         }]
@@ -52,7 +54,7 @@ const DonughtWithLabel = () => {
                 displayColors: false, // Hide color box in the tooltip
                 padding: 8,
                 callbacks: {
-                    // Display percentage
+                    // Display percentage in tooltip
                     label: (tooltipItem) => {
                         const total = tooltipItem.dataset.data.reduce((sum, value) => sum + value, 0);
                         const currentValue = tooltipItem.raw;
@@ -60,15 +62,26 @@ const DonughtWithLabel = () => {
                         return `${percentage}%`;
                     }
                 },
-                caretPadding: 10,
-                caretSize: 8,
-                usePointStyle: true,
+            },
+            datalabels: {
+                color: '#fff', // Label color
+                font: {
+                    size: 16,
+                    weight: 'bold'
+                },
+                formatter: (value, context) => {
+                    const total = context.dataset.data.reduce((sum, val) => sum + val, 0);
+                    const percentage = (value / total * 100).toFixed(0);
+                    return `${percentage}%`;
+                },
+                anchor: 'center', // Label will be placed inside the segments
+                align: 'center',
             }
         }
     };
 
     return (
-        <div className='w-[400px] rounded bg-green-200' >
+        <div className='w-[400px] rounded bg-green-200'>
             <div style={{ width: '150px', height: '150px', padding: 0, margin: 0 }}>
                 <Doughnut data={data} options={options} />
             </div>

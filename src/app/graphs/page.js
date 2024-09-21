@@ -1,3 +1,4 @@
+import AreaChart from '@/components/AreaChart'
 import DonughtWithLabel from '@/components/DonughtWithLabel'
 import DonutChart from '@/components/Donugth'
 import React from 'react'
@@ -8,6 +9,7 @@ const Graphs = () => {
         <div className='grid grid-cols-4'>
             <DonutChart />
             <DonughtWithLabel />
+            <AreaChart />
         </div>
     )
 }

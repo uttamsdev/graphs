@@ -39,6 +39,8 @@ const DonutChart = () => {
             legend: {
                 display: false, // Hide legend if not needed
             },
+            datalabels: false, // Disable datalabels plugin
+
             tooltip: {
                 enabled: true,
                 backgroundColor: '#fff', // White background
