@@ -5,9 +5,11 @@ import StackedBarChart from '@/components/Barchats2'
 // import BarChart from '@/components/BarChart'
 import DonughtWithLabel from '@/components/DonughtWithLabel'
 import DonutChart from '@/components/Donugth'
-import FancyDoughnutChart from '@/components/FancyDonout'
+import DonutChartX from '@/components/FancyDonout'
 import PieChart from '@/components/PieChart'
 import PolarAreaChart from '@/components/PolarArea'
+import CustomBarChart from '@/components/RechartBars'
+import GraphComponent from '@/components/TestGraph'
 import React from 'react'
 
 
@@ -20,8 +22,10 @@ const Graphs = () => {
             {/* <PieChart /> */}
             <BarChart />
             <PolarAreaChart />
-            <FancyDoughnutChart />
+            <DonutChartX />
             <StackedBarChart />
+            <CustomBarChart />
+            {/* <GraphComponent /> */}
         </div>
     )
 }

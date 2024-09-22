@@ -80,6 +80,7 @@ const BarChart = () => {
         setChartData(updatedData);
     }, [chartData]);
 
+
     const options = {
         scales: {
             y: {
@@ -91,7 +92,7 @@ const BarChart = () => {
                     display: false,
                 },
                 border: {
-                    display: false, // Removes the y-axis left border
+                    display: false,
                 },
             },
             x: {
@@ -104,16 +105,16 @@ const BarChart = () => {
                     },
                 },
                 border: {
-                    display: false, // Removes the x-axis bottom border
+                    display: false,
                 },
-                // Add these properties to create a gap
-                barPercentage: 50, // Adjust this value to increase or decrease the width of the bars
-                categoryPercentage: 5, // Adjust this value to create a gap between categories
+                // Increase gap between groups (months)
+                categoryPercentage: 0.3,  // Reduce this value to increase the space between groups
+                offsetGridLines: false,
             },
         },
         plugins: {
             legend: {
-                display: false, // Hide legend if not needed
+                display: false,
             },
             tooltip: {
                 enabled: true,
@@ -123,7 +124,7 @@ const BarChart = () => {
                     },
                 },
                 animation: {
-                    duration: 0, // Disable animation for fast tooltip response
+                    duration: 0,
                 },
             },
             datalabels: false,
@@ -135,10 +136,13 @@ const BarChart = () => {
         },
         responsive: true,
         maintainAspectRatio: false,
-        barThickness: 10, // Controls the thickness of the bars
-        grouped: true, // Adjusts gaps between bars
-        animations: false, // Disable animations to avoid slow transitions
+        grouped: true,  // Keep the bars grouped
+        barThickness: 'flex',  // Dynamic bar thickness to automatically adjust
+        maxBarThickness: 6,  // Max thickness to ensure bars don't become too wide
+        animations: false,
     };
+
+
 
     return (
         <div style={{ width: '400px', height: '300px' }}>

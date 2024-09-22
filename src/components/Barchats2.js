@@ -12,73 +12,73 @@ const StackedBarChart = () => {
         datasets: [
             {
                 label: 'Dataset 1',
-                data: [10, 20, 15, 40, 25, 30, 20, 10], // Bottom part of the stacked bars
-                backgroundColor: 'rgba(54, 162, 235, 1)', // Darker blue
+                data: [10, 20, 15, 40, 25, 30, 20, 10],
+                backgroundColor: 'rgba(54, 162, 235, 1)',
                 borderRadius: {
                     topLeft: 0,
                     topRight: 0,
                     bottomLeft: 4,
-                    bottomRight: 4, // Rounded only at the bottom for Dataset 1
+                    bottomRight: 4,
                 },
-                borderSkipped: false, // Ensures no hard edges at the bottom
+                borderSkipped: false,
             },
             {
                 label: 'Dataset 2',
-                data: [20, 25, 20, 25, 40, 20, 15, 5], // Top part of the stacked bars
-                backgroundColor: 'rgba(54, 162, 235, 0.2)', // Lighter blue
+                data: [20, 25, 20, 25, 40, 20, 15, 5],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 borderRadius: {
                     topLeft: 4,
                     topRight: 4,
                     bottomLeft: 0,
-                    bottomRight: 0, // Rounded only at the top for Dataset 2
+                    bottomRight: 0,
                 },
-                borderSkipped: false, // Ensures no hard edges at the top
+                borderSkipped: false,
             },
         ],
     };
 
     const options = {
         responsive: true,
+        maintainAspectRatio: false, // Disable aspect ratio maintenance
         scales: {
             x: {
-                stacked: true, // Enable stacking on the x-axis
+                stacked: true,
                 grid: {
-                    display: false, // Remove grid lines
+                    display: false,
                 },
                 border: {
-                    display: false, // Remove the bottom border of x-axis
+                    display: false,
                 },
             },
             y: {
-                stacked: true, // Enable stacking on the y-axis
+                stacked: true,
                 grid: {
-                    display: false, // Remove grid lines
+                    display: false,
                 },
                 border: {
-                    display: false, // Remove the left border of y-axis
+                    display: false,
                 },
                 ticks: {
-                    display: false, // Remove y-axis labels (range values)
+                    display: false,
                 },
             },
         },
         plugins: {
             legend: {
-                display: false, // Hides the legend to match the example
+                display: false,
             },
             datalabels: false,
             tooltip: {
-                enabled: true, // Enables tooltips
+                enabled: true,
                 callbacks: {
                     label: (tooltipItem) => {
-                        // Customize tooltip display value
                         return ` ${tooltipItem.raw}`;
                     },
                 },
             },
         },
-        barThickness: 12, // Adjust bar thickness
-        barPercentage: 0.6, // Further adjustment for bar width if needed
+        barThickness: 12,
+        barPercentage: 0.6,
     };
 
     return (
